@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mortgage Rates in 2026: A Volatile First Quarter</title>
+<title>Mortgage Rate Volatility — Q1 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -18,26 +18,28 @@
 html { font-size: 16px; }
 body { background: transparent; color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; -webkit-font-smoothing: antialiased; }
 
-/* HEADER */
-.hed { max-width: 640px; margin: 0 auto; padding: 2rem 1.5rem 1.25rem; }
-.kicker { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
-.hed h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(24px, 4vw, 36px); font-weight: 400; line-height: 1.18; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px; }
-.hed .deck { font-size: 16px; font-weight: 300; color: var(--ink-mid); line-height: 1.62; margin-bottom: 12px; }
-.hed .byline { font-family: 'DM Sans', sans-serif; font-size: 10px; color: var(--ink-faint); border-top: 1px solid var(--rule); padding-top: 8px; letter-spacing: 0.03em; }
-
-/* SCROLLY */
+/* ── SCROLLY ── */
 .scroller { position: relative; }
 
-/* STICKY CHART */
-.sticky-chart { position: sticky; top: 0; width: 100%; height: 100vh; z-index: 0; display: flex; flex-direction: column; justify-content: center; padding: 1rem 1.5rem 0.75rem; background: var(--paper); pointer-events: none; }
+.sticky-chart {
+  position: sticky; top: 0; width: 100%; height: 100vh;
+  z-index: 0; display: flex; flex-direction: column;
+  justify-content: center; padding: 1rem 1.5rem 0.75rem;
+  background: var(--paper); pointer-events: none;
+}
 .chart-label { font-family: 'DM Sans', sans-serif; font-size: 10.5px; color: var(--ink-light); letter-spacing: 0.03em; margin-bottom: 4px; max-width: 680px; margin-left: auto; margin-right: auto; width: 100%; }
 .chart-canvas-wrap { position: relative; width: 100%; max-width: 860px; margin: 0 auto; flex: 1; max-height: calc(100vh - 90px); min-height: 200px; }
 .chart-source { font-family: 'DM Sans', sans-serif; font-size: 9.5px; color: var(--ink-faint); max-width: 680px; margin: 4px auto 0; width: 100%; }
 
-/* STORY PANELS */
+/* ── STORY PANELS ── */
 .story-panels { position: relative; z-index: 10; margin-top: -100vh; padding-bottom: 4rem; pointer-events: none; }
 
-.intro-panel { max-width: 420px; margin: 0 auto; padding: 2rem 1.5rem; background: var(--paper); border-radius: 4px; box-shadow: 0 2px 24px rgba(0,0,0,0.08); pointer-events: auto; margin-top: calc(100vh * 0.12); }
+.intro-panel {
+  max-width: 420px; margin: 0 auto; padding: 2rem 1.5rem;
+  background: var(--paper); border-radius: 4px;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+  pointer-events: auto; margin-top: calc(100vh * 0.12);
+}
 .intro-panel p { font-size: 15px; font-weight: 300; color: var(--ink-mid); line-height: 1.72; margin-bottom: 0.9em; }
 .intro-panel p:last-child { margin-bottom: 0; }
 .scroll-cue { font-family: 'DM Sans', sans-serif; font-size: 10.5px; color: var(--teal); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 14px; display: flex; align-items: center; gap: 6px; }
@@ -45,8 +47,18 @@ body { background: transparent; color: var(--ink); font-family: 'Source Serif 4'
 
 .panel-spacer { height: 50vh; }
 
-.story-section { max-width: 420px; margin: 0 auto 50vh; padding: 1.5rem 1.5rem 1.75rem; background: var(--paper); border-radius: 4px; box-shadow: 0 2px 28px rgba(0,0,0,0.09); pointer-events: auto; opacity: 0.25; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease; }
-.story-section.is-active { opacity: 1; transform: translateY(0); box-shadow: 0 4px 40px rgba(0,0,0,0.14); }
+.story-section {
+  max-width: 420px; margin: 0 auto 50vh;
+  padding: 1.5rem 1.5rem 1.75rem;
+  background: var(--paper); border-radius: 4px;
+  box-shadow: 0 2px 28px rgba(0,0,0,0.09);
+  pointer-events: auto;
+  opacity: 0.25;
+  outline: none; /* shown via box-shadow on focus */
+  transition: opacity 0.4s ease, box-shadow 0.4s ease;
+}
+.story-section:focus-visible { box-shadow: 0 0 0 3px var(--teal); }
+.story-section.is-active { opacity: 1; box-shadow: 0 4px 40px rgba(0,0,0,0.14); }
 
 .event-meta { display: flex; align-items: center; gap: 7px; margin-bottom: 10px; }
 .event-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
@@ -63,13 +75,19 @@ body { background: transparent; color: var(--ink); font-family: 'Source Serif 4'
 .rate-pull .rp-cap { font-family: 'DM Sans', sans-serif; font-size: 10.5px; color: var(--ink-light); }
 .up { color: var(--red); } .dn { color: var(--green); }
 
-.story-closing { max-width: 420px; margin: 0 auto; padding: 1.5rem 1.5rem 1.75rem; background: var(--paper); border-radius: 4px; box-shadow: 0 2px 28px rgba(0,0,0,0.09); pointer-events: auto; opacity: 0.25; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease; margin-bottom: 0; }
-.story-closing.is-active { opacity: 1; transform: translateY(0); }
+.story-closing {
+  max-width: 420px; margin: 0 auto; padding: 1.5rem 1.5rem 1.75rem;
+  background: var(--paper); border-radius: 4px;
+  box-shadow: 0 2px 28px rgba(0,0,0,0.09);
+  pointer-events: auto; opacity: 0.25; margin-bottom: 0;
+  transition: opacity 0.4s ease;
+}
+.story-closing.is-active { opacity: 1; }
 .story-closing p { font-size: 14.5px; font-weight: 300; color: var(--ink-mid); line-height: 1.72; margin-bottom: 0.85em; }
 .story-closing p:last-child { margin-bottom: 0; }
 
-/* CALCULATOR */
-.calc-wrap { max-width: 640px; margin: 0 auto; padding: 3rem 1.5rem 4rem; border-top: 1.5px solid var(--ink); margin-top: 3rem; }
+/* ── CALCULATOR ── */
+.calc-wrap { max-width: 640px; margin: 0 auto; padding: 3rem 1.5rem 2.5rem; border-top: 1.5px solid var(--ink); margin-top: 3rem; }
 .calc-kicker { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
 .calc-head { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 6px; }
 .calc-sub { font-size: 14px; font-weight: 300; color: var(--ink-mid); line-height: 1.55; margin-bottom: 1.75rem; }
@@ -85,7 +103,15 @@ body { background: transparent; color: var(--ink); font-family: 'Source Serif 4'
 .cc-val.red { color: var(--red); } .cc-val.green { color: var(--green); }
 .calc-note { font-family: 'DM Sans', sans-serif; font-size: 9.5px; color: var(--ink-faint); line-height: 1.5; }
 
-/* MOBILE */
+/* ── SOURCES ── */
+.sources-wrap { max-width: 640px; margin: 0 auto; padding: 2rem 1.5rem 4rem; border-top: 0.5px solid var(--rule); }
+.sources-head { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 12px; }
+.sources-wrap ul { list-style: none; padding: 0; }
+.sources-wrap li { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--ink-faint); line-height: 1.6; margin-bottom: 6px; padding-left: 14px; position: relative; }
+.sources-wrap li::before { content: '—'; position: absolute; left: 0; color: var(--rule); }
+.sources-wrap li a { color: var(--ink-light); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ── MOBILE ── */
 @media (max-width: 680px) {
   .sticky-chart { height: 38vh; min-height: 190px; padding: 0.6rem 1rem 0.5rem; justify-content: flex-start; }
   .chart-canvas-wrap { max-height: calc(38vh - 44px); }
@@ -97,22 +123,21 @@ body { background: transparent; color: var(--ink); font-family: 'Source Serif 4'
   .slider-row label { min-width: 84px; }
   .panel-spacer { height: 38vh; }
 }
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  .story-section, .story-closing { transition: opacity 0.1s ease; }
+}
 </style>
 </head>
 <body>
 
-<div class="hed">
-  <p class="kicker">Mortgage Market · 2026</p>
-  <h1>Rates Below 6%, Then Above 6.6%: A Volatile First Quarter</h1>
-  <p class="deck">In the first three months of 2026, the 30-year fixed mortgage rate swung more than half a percentage point — driven by a presidential directive, a geopolitical standoff and the outbreak of war in the Middle East.</p>
-  <p class="byline">Data: Mortgage News Daily daily rate index &nbsp;·&nbsp; Freddie Mac Primary Mortgage Market Survey</p>
-</div>
-
 <div class="scroller">
-  <div class="sticky-chart">
+  <div class="sticky-chart" role="img" aria-label="Line chart showing the 30-year fixed mortgage rate from January through April 2026, with the rate falling to 5.99% in late February before surging to 6.62% by late March following the outbreak of war with Iran." aria-describedby="chart-desc">
+    <p id="chart-desc" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Key verified data points from Mortgage News Daily: Jan. 9 = 5.99% (−22 basis points following Trump MBS directive); Jan. 20 = 6.21% (+14 basis points, Greenland tariff threat); Feb. 27 = 5.99% (cycle low); March 2 = 6.12% (+13 basis points, Iran strikes begin); March 18 = 6.36% (Fed holds rates); March 26 = 6.62% (peak); April 1 = 6.45%.</p>
     <p class="chart-label">30-year fixed mortgage rate — daily, Mortgage News Daily</p>
-    <div class="chart-canvas-wrap"><canvas id="rc"></canvas></div>
-    <p class="chart-source">Sources: Mortgage News Daily; Freddie Mac PMMS. Values between confirmed anchors are interpolated for illustrative continuity.</p>
+    <div class="chart-canvas-wrap"><canvas id="rc" aria-hidden="true"></canvas></div>
+    <p class="chart-source">Verified MND anchors connected by interpolation — see sources below for methodology.</p>
   </div>
 
   <div class="story-panels">
@@ -126,11 +151,11 @@ body { background: transparent; color: var(--ink); font-family: 'Source Serif 4'
     <div class="panel-spacer"></div>
 
     <!-- EVENT 1 -->
-    <div class="story-section" data-ev="0">
+    <div class="story-section" data-ev="0" tabindex="0" aria-label="Event 1: Jan. 9, 2026. Rate: 5.99%.">
       <div class="event-meta">
-        <span class="event-dot"></span>
+        <span class="event-dot" aria-hidden="true"></span>
         <span class="event-date">Jan. 9, 2026</span>
-        <span class="event-rate-tag">5.99%</span>
+        <span class="event-rate-tag" aria-label="Rate: 5.99%">5.99%</span>
       </div>
       <h2 class="section-head">A presidential directive drops rates 22 basis points in a day</h2>
       <div class="section-body">
@@ -144,11 +169,11 @@ body { background: transparent; color: var(--ink); font-family: 'Source Serif 4'
     </div>
 
     <!-- EVENT 2 -->
-    <div class="story-section" data-ev="1">
+    <div class="story-section" data-ev="1" tabindex="0" aria-label="Event 2: Jan. 20, 2026. Rate: 6.21%.">
       <div class="event-meta">
-        <span class="event-dot"></span>
+        <span class="event-dot" aria-hidden="true"></span>
         <span class="event-date">Jan. 20, 2026</span>
-        <span class="event-rate-tag">6.21%</span>
+        <span class="event-rate-tag" aria-label="Rate: 6.21%">6.21%</span>
       </div>
       <h2 class="section-head">The Greenland tariff threat reverses the gains overnight</h2>
       <div class="section-body">
@@ -162,11 +187,11 @@ body { background: transparent; color: var(--ink); font-family: 'Source Serif 4'
     </div>
 
     <!-- EVENT 3 -->
-    <div class="story-section" data-ev="2">
+    <div class="story-section" data-ev="2" tabindex="0" aria-label="Event 3: Feb. 27, 2026. Rate: 5.99%.">
       <div class="event-meta">
-        <span class="event-dot"></span>
-        <span class="event-date">Feb. 26, 2026</span>
-        <span class="event-rate-tag">5.99%</span>
+        <span class="event-dot" aria-hidden="true"></span>
+        <span class="event-date">Feb. 27, 2026</span>
+        <span class="event-rate-tag" aria-label="Rate: 5.99%">5.99%</span>
       </div>
       <h2 class="section-head">A 3½-year milestone: below 6% and holding</h2>
       <div class="section-body">
@@ -175,16 +200,16 @@ body { background: transparent; color: var(--ink); font-family: 'Source Serif 4'
           <span class="rp-num">5.98%</span>
           <span class="rp-cap">Freddie Mac PMMS, week of Feb. 26 &nbsp;·&nbsp; First sub-6% weekly average since mid-2022</span>
         </div>
-        <p>The MND index held at 5.99% through the final week of February. On Feb. 26, Freddie Mac's weekly survey recorded 5.98% — the first reading below 6% in three-and-a-half years. Refinance applications surged. Two days later, everything changed.</p>
+        <p>By the final week of February, MND's daily index was hovering around 6%, touching 5.99% on Feb. 23 and again on Feb. 27. Freddie Mac's weekly survey for the same period recorded 5.98% — the first reading below 6% in three-and-a-half years. Refinance applications surged. Two days later, everything changed.</p>
       </div>
     </div>
 
     <!-- EVENT 4 -->
-    <div class="story-section" data-ev="3">
+    <div class="story-section" data-ev="3" tabindex="0" aria-label="Event 4: March 2, 2026. Rate: 6.12%.">
       <div class="event-meta">
-        <span class="event-dot"></span>
+        <span class="event-dot" aria-hidden="true"></span>
         <span class="event-date">March 2, 2026</span>
-        <span class="event-rate-tag">6.12%</span>
+        <span class="event-rate-tag" aria-label="Rate: 6.12%">6.12%</span>
       </div>
       <h2 class="section-head">War breaks out — and rates move the wrong way</h2>
       <div class="section-body">
@@ -198,47 +223,47 @@ body { background: transparent; color: var(--ink); font-family: 'Source Serif 4'
     </div>
 
     <!-- EVENT 5 -->
-    <div class="story-section" data-ev="4">
+    <div class="story-section" data-ev="4" tabindex="0" aria-label="Event 5: March 18, 2026. Rate: 6.36%.">
       <div class="event-meta">
-        <span class="event-dot"></span>
+        <span class="event-dot" aria-hidden="true"></span>
         <span class="event-date">March 18, 2026</span>
-        <span class="event-rate-tag">6.48%</span>
+        <span class="event-rate-tag" aria-label="Rate: 6.36%">6.36%</span>
       </div>
       <h2 class="section-head">The Fed holds — and dashes hopes for cuts this year</h2>
       <div class="section-body">
-        <p>The Federal Reserve voted unanimously to hold its benchmark rate at 3.50%-3.75%, citing "uncertain impacts from the war with Iran." But officials raised their 2026 core inflation forecast to 2.7% and signaled only one possible cut for the rest of the year.</p>
+        <p>The Federal Reserve voted unanimously to hold its benchmark rate at 3½% to 3¾%, citing "uncertain impacts from the war with Iran." But officials raised their 2026 core inflation forecast to 2.7% and signaled only one possible cut for the rest of the year.</p>
         <div class="rate-pull">
-          <span class="rp-num">6.48%</span>
-          <span class="rp-cap">MND, March 18, 2026 &nbsp;·&nbsp; Up <span class="up">+49 basis points</span> from the Feb. low in 19 days</span>
+          <span class="rp-num">6.36%</span>
+          <span class="rp-cap">MND, March 18, 2026 &nbsp;·&nbsp; Up <span class="up">+37 basis points</span> from the Feb. low in 19 days</span>
         </div>
         <p>In January, markets had priced in two or three cuts. That reversal drove bond yields higher. The probability of a rate hike climbed above 50% in futures markets for the first time.</p>
       </div>
     </div>
 
     <!-- EVENT 6 -->
-    <div class="story-section" data-ev="5">
+    <div class="story-section" data-ev="5" tabindex="0" aria-label="Event 6: March 26, 2026. Rate: 6.62%.">
       <div class="event-meta">
-        <span class="event-dot"></span>
+        <span class="event-dot" aria-hidden="true"></span>
         <span class="event-date">March 26, 2026</span>
-        <span class="event-rate-tag">6.62%</span>
+        <span class="event-rate-tag" aria-label="Rate: 6.62%">6.62%</span>
       </div>
       <h2 class="section-head">The biggest weekly surge since Liberation Day</h2>
       <div class="section-body">
         <p>The Mortgage News Daily index reached 6.62% — the highest since summer 2025 and a climb of 63 basis points from the Feb. 27 low in fewer than four weeks.</p>
         <div class="rate-pull">
           <span class="rp-num">6.62%</span>
-          <span class="rp-cap">MND, ~March 26 &nbsp;·&nbsp; <span class="up">+63 basis points</span> from the Feb. 27 low of 5.99%</span>
+          <span class="rp-cap">MND, March 26, 2026 &nbsp;·&nbsp; <span class="up">+63 basis points</span> from the Feb. 27 low of 5.99%</span>
         </div>
-        <p>Freddie Mac's weekly survey recorded the largest single-week jump since Trump's original Liberation Day tariffs in April 2025. On a $400,000 home with 20% down, the swing from February to March added roughly $150 a month — about $1,800 a year — to a buyer's costs.</p>
+        <p>Freddie Mac's weekly survey recorded 6.38% for the same period — the largest single-week jump since Trump's original Liberation Day tariffs in April 2025. On a $400,000 home with 20% down, the swing from February's low to March's peak added about $131 a month in principal and interest — roughly $1,575 a year — to a buyer's costs.</p>
       </div>
     </div>
 
-    <!-- EVENT 7 — NEW: rates ease in early April -->
-    <div class="story-section" data-ev="6">
+    <!-- EVENT 7 -->
+    <div class="story-section" data-ev="6" tabindex="0" aria-label="Event 7: April 1, 2026. Rate: 6.45%.">
       <div class="event-meta">
-        <span class="event-dot"></span>
+        <span class="event-dot" aria-hidden="true"></span>
         <span class="event-date">April 1–2, 2026</span>
-        <span class="event-rate-tag">6.45%</span>
+        <span class="event-rate-tag" aria-label="Rate: 6.45%">6.45%</span>
       </div>
       <h2 class="section-head">Rates ease from the peak — but remain elevated</h2>
       <div class="section-body">
@@ -247,112 +272,162 @@ body { background: transparent; color: var(--ink); font-family: 'Source Serif 4'
           <span class="rp-num">6.45%</span>
           <span class="rp-cap">MND, April 1, 2026 &nbsp;·&nbsp; <span class="dn">−17 basis points</span> from the late-March peak</span>
         </div>
-        <p>Even with the modest retreat, rates remain well above the February low and the spring homebuying season continues to face headwinds. Economists warn that any re-escalation of the Iran conflict or hotter-than-expected inflation data could push rates back toward the March peak quickly.</p>
+        <p>Even with the modest retreat, rates remain well above the February low. Economists warn that any re-escalation of the Iran conflict or a hotter-than-expected inflation reading could push rates back toward 6.6% quickly.</p>
       </div>
     </div>
 
     <div class="story-closing" data-closing>
       <p>As of early April 2026, the 30-year fixed rate sits roughly 45 basis points above where it was six weeks ago, when it briefly dipped below 6% for the first time since 2022. Mortgage applications for home purchases have fallen for four consecutive weeks.</p>
       <p>The first quarter of 2026 illustrated a recurring reality: rates respond not just to Federal Reserve decisions, but to social media posts, tariff threats, oil shocks and military conflict. For borrowers trying to time their purchase, that unpredictability is now the baseline.</p>
-      <p style="font-family:'DM Sans',sans-serif; font-size:10px; color:var(--ink-faint); margin-top:1.25rem; line-height:1.5;">Confirmed MND daily rate anchors: Jan. 9 = 5.99% (−22 bps); Jan. 20 = 6.21% (+14 bps); Feb. 23–27 = 5.99%; March 2 = 6.12% (+13 bps); ~March 26 ≈ 6.62%; April 1 = 6.45%. Freddie Mac PMMS: Feb. 26 = 5.98%; March 26 = 6.38%. Values between confirmed anchors are interpolated.</p>
     </div>
 
   </div>
 </div>
 
+<!-- CALCULATOR -->
 <div class="calc-wrap">
   <p class="calc-kicker">What this means for you</p>
   <h2 class="calc-head">The rate swing in dollars and cents</h2>
   <p class="calc-sub">Adjust your home price and down payment to see how the first-quarter rate swing affects monthly payments. Principal and interest only.</p>
   <div class="slider-row">
-    <label>Home price</label>
-    <input type="range" id="sl-price" min="150000" max="1200000" step="5000" value="400000">
-    <span class="sv" id="sv-price">$400,000</span>
+    <label for="sl-price">Home price</label>
+    <input type="range" id="sl-price" min="150000" max="1200000" step="5000" value="400000" aria-valuetext="$400,000">
+    <span class="sv" id="sv-price" aria-live="polite">$400,000</span>
   </div>
   <div class="slider-row">
-    <label>Down payment</label>
-    <input type="range" id="sl-down" min="5" max="40" step="1" value="20">
-    <span class="sv" id="sv-down">20%</span>
+    <label for="sl-down">Down payment</label>
+    <input type="range" id="sl-down" min="5" max="40" step="1" value="20" aria-valuetext="20%">
+    <span class="sv" id="sv-down" aria-live="polite">20%</span>
   </div>
-  <div class="calc-cards" id="calc-cards"></div>
-  <p class="calc-note">Monthly payment = principal + interest on a 30-year amortizing loan. Excludes taxes, insurance and PMI. Rates used: Feb. 27 low of 5.99% and March 26 peak of ~6.62% (Mortgage News Daily); current rate of 6.45% (MND, April 1, 2026).</p>
+  <div class="calc-cards" id="calc-cards" aria-live="polite" aria-atomic="true"></div>
+  <p class="calc-note">Monthly payment = principal + interest on a 30-year amortizing loan. Excludes taxes, insurance and PMI. Rates: Feb. 27 low of 5.99% and March 26 peak of 6.62% (Mortgage News Daily); current rate of 6.45% (MND, April 1, 2026).</p>
+</div>
+
+<!-- SOURCES -->
+<div class="sources-wrap">
+  <p class="sources-head">Sources and methodology</p>
+  <ul>
+    <li><strong>Daily rate data:</strong> Mortgage News Daily Rate Index, a proprietary daily survey of lender rate sheets for top-tier conventional 30-year fixed loans. Verified anchor dates are Jan. 9 (5.99%), Jan. 20 (6.21%), Feb. 23 and 27 (5.99%), March 2 (6.12%), March 18 (6.36%), March 26 (6.62%) and April 1 (6.45%). All other plotted values are interpolated between verified anchors and labeled as such.</li>
+    <li><strong>Weekly rate data:</strong> Freddie Mac Primary Mortgage Market Survey (PMMS), retrieved via FRED series MORTGAGE30US, Federal Reserve Bank of St. Louis. Week of Feb. 26, 2026 = 5.98%; week of March 26, 2026 = 6.38%.</li>
+    <li><strong>10-year Treasury yield:</strong> Federal Reserve H.15 release, retrieved via FRED series DGS10. Jan. 20, 2026 = 4.30%.</li>
+    <li><strong>Federal Reserve policy decision:</strong> FOMC statement, March 18, 2026. Target range maintained at 3½% to 3¾%. <a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noopener">federalreserve.gov</a></li>
+    <li><strong>Trump $200B MBS directive:</strong> Multiple independent outlets including Reuters, NBC News, CNBC and Scotsman Guide, Jan. 8–9, 2026.</li>
+    <li><strong>Greenland tariff threat and market impact:</strong> Reuters and The Associated Press, Jan. 19–27, 2026.</li>
+    <li><strong>Iran war and mortgage rates:</strong> CNBC, Marketplace/APM, ABC News and HousingWire, February–March 2026.</li>
+    <li><strong>Payment calculator:</strong> Standard fixed-rate amortization formula. At the default scenario ($400,000 home, 20% down, $320,000 loan, 30-year term), the Feb. 27 low rate of 5.99% produces a monthly P&amp;I payment of $1,917; the March 26 peak of 6.62% produces $2,048 — a difference of $131/month or approximately $1,575/year.</li>
+  </ul>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-/* ── DATA ──────────────────────────────────────────────────────────────
-   Confirmed MND anchors:
-   Jan. 8  = 6.21 (day before MBS post)
-   Jan. 9  = 5.99 (−22 bps, Trump MBS directive)
-   Jan. 20 = 6.21 (+14 bps, Greenland tariff threat)
-   Feb. 23–27 = 5.99
-   March 2  = 6.12 (+13 bps, first day post-Iran strikes)
-   ~March 26 ≈ 6.62 (MND peak per HousingWire)
-   April 1  = 6.45 (−0.02 from prior day, confirmed MND)
-   April 2  ≈ 6.43 (MND noted "slightly lower")
-   All other values interpolated between anchors.
-──────────────────────────────────────────────────────────────────────── */
+/* ── DATA ─────────────────────────────────────────────────────────────────
+   All values corrected per QA review against authoritative MND daily index.
+   Confirmed anchors marked; all other values interpolated between anchors.
+
+   QA corrections applied (vs prior version):
+   Feb 25:  5.99 → 6.00  (MND)
+   Feb 26:  5.99 → 6.00  (MND; Freddie Mac PMMS for this week = 5.98%)
+   Mar 16:  6.45 → 6.36  (MND)
+   Mar 17:  6.47 → 6.29  (MND — largest prior error: +18 bps)
+   Mar 18:  6.48 → 6.36  (MND)
+   Mar 19:  6.50 → 6.43  (MND)
+   Mar 20:  6.52 → 6.53  (MND)
+   Mar 24:  6.58 → 6.55  (MND)
+   Mar 25:  6.60 → 6.48  (MND)
+   Mar 27:  6.58 → 6.64  (MND)
+   Mar 30:  6.52 → 6.55  (MND)
+   EVENTS[2] moved from idx 37 (Feb 26, 6.00) to idx 38 (Feb 27, 5.99 confirmed)
+   EVENTS[4] rate updated from 6.48 to 6.36; bps narrative updated from +49 to +37
+──────────────────────────────────────────────────────────────────────────── */
 
 const dates = [
   'Jan 2','Jan 5','Jan 6','Jan 7','Jan 8',
-  'Jan 9',
+  'Jan 9',   /* idx  5 — CONFIRMED 5.99, −22 bps */
   'Jan 12','Jan 13','Jan 14','Jan 15','Jan 16',
-  'Jan 20',
+  'Jan 20',  /* idx 11 — CONFIRMED 6.21, +14 bps */
   'Jan 21','Jan 22','Jan 23','Jan 26','Jan 27','Jan 28','Jan 29','Jan 30',
   'Feb 2','Feb 3','Feb 4','Feb 5','Feb 6',
   'Feb 9','Feb 10','Feb 11','Feb 12','Feb 13',
   'Feb 17','Feb 18','Feb 19','Feb 20',
-  'Feb 23','Feb 24','Feb 25','Feb 26','Feb 27',
-  'Mar 2','Mar 3','Mar 4','Mar 5','Mar 6',
+  'Feb 23','Feb 24',
+  'Feb 25',  /* idx 36 — MND 6.00 */
+  'Feb 26',  /* idx 37 — MND 6.00 (Freddie Mac PMMS weekly = 5.98%) */
+  'Feb 27',  /* idx 38 — CONFIRMED 5.99 */
+  'Mar 2',   /* idx 39 — CONFIRMED 6.12, +13 bps */
+  'Mar 3','Mar 4','Mar 5','Mar 6',
   'Mar 9','Mar 10','Mar 11','Mar 12','Mar 13',
-  'Mar 16','Mar 17','Mar 18','Mar 19','Mar 20',
-  'Mar 23','Mar 24','Mar 25','Mar 26',
-  'Mar 27','Mar 30','Mar 31',
-  'Apr 1',
-  'Apr 2'
+  'Mar 16',  /* idx 49 — MND 6.36 */
+  'Mar 17',  /* idx 50 — MND 6.29 */
+  'Mar 18',  /* idx 51 — MND 6.36 (Fed meeting) */
+  'Mar 19',  /* idx 52 — MND 6.43 */
+  'Mar 20',  /* idx 53 — MND 6.53 */
+  'Mar 23',
+  'Mar 24',  /* idx 55 — MND 6.55 */
+  'Mar 25',  /* idx 56 — MND 6.48 */
+  'Mar 26',  /* idx 57 — CONFIRMED 6.62 peak */
+  'Mar 27',  /* idx 58 — MND 6.64 */
+  'Mar 30',  /* idx 59 — MND 6.55 */
+  'Mar 31',  /* idx 60 — MND 6.47 */
+  'Apr 1',   /* idx 61 — CONFIRMED 6.45 */
+  'Apr 2'    /* idx 62 — MND "slightly lower" ~6.43 */
 ];
 
 const rates = [
   /* Jan 2–8  */ 6.19,6.18,6.19,6.20,6.21,
-  /* Jan 9    */ 5.99, // CONFIRMED −22 bps
+  /* Jan 9    */ 5.99,  /* CONFIRMED */
   /* Jan 12–16*/ 6.04,6.05,6.06,6.07,6.07,
-  /* Jan 20   */ 6.21, // CONFIRMED +14 bps
+  /* Jan 20   */ 6.21,  /* CONFIRMED */
   /* Jan 21–30*/ 6.19,6.16,6.14,6.12,6.10,6.09,6.08,6.07,
   /* Feb 2–6  */ 6.06,6.05,6.04,6.04,6.03,
   /* Feb 9–13 */ 6.04,6.02,6.01,6.01,6.01,
   /* Feb 17–20*/ 6.01,6.00,6.00,6.00,
-  /* Feb 23–27*/ 5.99,5.99,5.99,5.99,5.99, // CONFIRMED
-  /* Mar 2    */ 6.12, // CONFIRMED +13 bps post-Iran strikes
+  /* Feb 23–24*/ 5.99,5.99,
+  /* Feb 25   */ 6.00,  /* MND — corrected from 5.99 */
+  /* Feb 26   */ 6.00,  /* MND — corrected from 5.99 */
+  /* Feb 27   */ 5.99,  /* CONFIRMED */
+  /* Mar 2    */ 6.12,  /* CONFIRMED */
   /* Mar 3–6  */ 6.17,6.21,6.25,6.28,
   /* Mar 9–13 */ 6.32,6.36,6.39,6.42,6.44,
-  /* Mar 16–18*/ 6.45,6.47,6.48, // Fed meeting Mar 18
-  /* Mar 19–20*/ 6.50,6.52,
-  /* Mar 23–25*/ 6.55,6.58,6.60,
-  /* Mar 26   */ 6.62, // CONFIRMED MND peak
-  /* Mar 27–31*/ 6.58,6.52,6.47,
-  /* Apr 1    */ 6.45, // CONFIRMED MND
-  /* Apr 2    */ 6.43  // MND "slightly lower"
+  /* Mar 16   */ 6.36,  /* MND — corrected from 6.45 */
+  /* Mar 17   */ 6.29,  /* MND — corrected from 6.47 (was +18 bps off) */
+  /* Mar 18   */ 6.36,  /* MND — corrected from 6.48 */
+  /* Mar 19   */ 6.43,  /* MND — corrected from 6.50 */
+  /* Mar 20   */ 6.53,  /* MND — corrected from 6.52 */
+  /* Mar 23   */ 6.54,  /* interpolated between 6.53 and 6.55 */
+  /* Mar 24   */ 6.55,  /* MND — corrected from 6.58 */
+  /* Mar 25   */ 6.48,  /* MND — corrected from 6.60 */
+  /* Mar 26   */ 6.62,  /* CONFIRMED peak */
+  /* Mar 27   */ 6.64,  /* MND — corrected from 6.58 */
+  /* Mar 30   */ 6.55,  /* MND — corrected from 6.52 */
+  /* Mar 31   */ 6.47,  /* MND — confirmed */
+  /* Apr 1    */ 6.45,  /* CONFIRMED */
+  /* Apr 2    */ 6.43   /* MND "slightly lower" */
 ];
 
+/* Event anchors — idx maps into dates[]/rates[] */
 const EVENTS = [
-  { idx:  5, rate: 5.99 }, // Jan 9
-  { idx: 11, rate: 6.21 }, // Jan 20
-  { idx: 37, rate: 5.99 }, // Feb 26
-  { idx: 39, rate: 6.12 }, // Mar 2
-  { idx: 51, rate: 6.48 }, // Mar 18
-  { idx: 57, rate: 6.62 }, // Mar 26
-  { idx: 61, rate: 6.43 }  // Apr 2
+  { idx:  5, rate: 5.99 }, /* Jan 9 */
+  { idx: 11, rate: 6.21 }, /* Jan 20 */
+  { idx: 38, rate: 5.99 }, /* Feb 27 — moved from idx 37 (Feb 26 = 6.00 per MND) */
+  { idx: 39, rate: 6.12 }, /* Mar 2 */
+  { idx: 51, rate: 6.36 }, /* Mar 18 — corrected from 6.48 */
+  { idx: 57, rate: 6.62 }, /* Mar 26 */
+  { idx: 61, rate: 6.45 }  /* Apr 1 */
 ];
 
-/* ── ANIMATION ── */
+/* ── ANIMATION (respects prefers-reduced-motion) ── */
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const DUR = prefersReduced ? 0 : 560;
+
 let curEv=0, animX=EVENTS[0].idx, fromX=EVENTS[0].idx, toX=EVENTS[0].idx;
 let t0=null, rafId=null;
-const DUR=560;
 function ease(t){ return 1-Math.pow(1-t,3); }
+
 function animateTo(ev){
   if(ev===curEv) return;
   curEv=ev; fromX=animX; toX=EVENTS[ev].idx; t0=null;
   if(rafId) cancelAnimationFrame(rafId);
+  if(DUR === 0){ animX=toX; chart.update('none'); return; }
   rafId=requestAnimationFrame(tick);
 }
 function tick(ts){
@@ -373,6 +448,7 @@ function rr(ctx,x,y,w,h,r){
   ctx.lineTo(x+r[3],y+h); ctx.quadraticCurveTo(x,y+h,x,y+h-r[3]);
   ctx.lineTo(x,y+r[0]); ctx.quadraticCurveTo(x,y,x+r[0],y); ctx.closePath();
 }
+
 const calloutPlugin={
   id:'callout',
   afterDatasetsDraw(c){
@@ -380,13 +456,16 @@ const calloutPlugin={
     const xi=Math.round(animX), xp=x.getPixelForValue(animX);
     const rv=rates[xi]??EVENTS[curEv].rate, yp=y.getPixelForValue(rv);
     ctx.save();
+    /* dotted vertical line */
     ctx.beginPath(); ctx.setLineDash([4,4]);
     ctx.strokeStyle='rgba(26,150,150,0.55)'; ctx.lineWidth=1.3;
     ctx.moveTo(xp,ca.top); ctx.lineTo(xp,ca.bottom); ctx.stroke();
     ctx.setLineDash([]);
+    /* dot on line */
     ctx.beginPath(); ctx.arc(xp,yp,5,0,2*Math.PI);
     ctx.fillStyle='#1a9696'; ctx.fill();
     ctx.strokeStyle='#faf9f7'; ctx.lineWidth=1.8; ctx.stroke();
+    /* callout box */
     const bw=180,bh=58,pad=10,gap=12;
     let bx=xp+gap; if(bx+bw>ca.right-4) bx=xp-bw-gap;
     const by=ca.top+14;
@@ -395,11 +474,15 @@ const calloutPlugin={
     ctx.shadowColor='transparent'; ctx.shadowBlur=0;
     ctx.strokeStyle='#d9d6d0'; ctx.lineWidth=0.75;
     rr(ctx,bx,by,bw,bh,4); ctx.stroke();
+    /* teal top strip */
     ctx.fillStyle='#1a9696'; rr(ctx,bx,by,bw,4,[4,4,0,0]); ctx.fill();
+    /* date */
     ctx.font='500 10px "DM Sans",sans-serif'; ctx.fillStyle='#1a9696';
     ctx.fillText(dates[xi],bx+pad,by+17);
+    /* rate */
     ctx.font='400 21px "Playfair Display",Georgia,serif'; ctx.fillStyle='#1c1c1a';
     ctx.fillText(rv.toFixed(2)+'%',bx+pad,by+42);
+    /* bps vs prior session */
     const prev=xi>0?rates[xi-1]:rv, d=rv-prev;
     ctx.font='400 10px "DM Sans",sans-serif';
     ctx.fillStyle=d>=0?'#b83228':'#1c7a45';
@@ -409,6 +492,7 @@ const calloutPlugin={
 };
 Chart.register(calloutPlugin);
 
+/* ── CHART ── */
 const gC='rgba(0,0,0,0.05)', tC='#a6a6a2';
 const chart=new Chart(document.getElementById('rc'),{
   type:'line',
@@ -442,20 +526,32 @@ const chart=new Chart(document.getElementById('rc'),{
   }
 });
 
-/* ── INTERSECTION OBSERVER ── */
+/* ── INTERSECTION OBSERVER + KEYBOARD ── */
 const sections=document.querySelectorAll('.story-section');
 const closing=document.querySelector('[data-closing]');
+
+function activate(el){
+  el.classList.add('is-active');
+  const ev=el.dataset.ev;
+  if(ev!=null) animateTo(+ev);
+}
+function deactivate(el){ el.classList.remove('is-active'); }
+
 const io=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
-    e.target.classList.toggle('is-active',e.isIntersecting);
-    if(e.isIntersecting){
-      const ev=e.target.dataset.ev;
-      if(ev!=null) animateTo(+ev);
-    }
+    if(e.isIntersecting) activate(e.target);
+    else deactivate(e.target);
   });
 },{root:null, rootMargin:'-28% 0px -28% 0px', threshold:0});
-sections.forEach(s=>io.observe(s));
+
+sections.forEach(s=>{
+  io.observe(s);
+  /* keyboard: trigger when section receives focus */
+  s.addEventListener('focusin', ()=>activate(s));
+});
 io.observe(closing);
+
+/* Activate first section on load */
 sections[0].classList.add('is-active');
 chart.update('none');
 
@@ -463,13 +559,21 @@ chart.update('none');
 const R_LOW=5.99, R_PEAK=6.62, R_NOW=6.45;
 function pmt(p,r){ const m=r/100/12,n=360; return m?p*m*Math.pow(1+m,n)/(Math.pow(1+m,n)-1):p/n; }
 function fmt(n){ return '$'+Math.round(n).toLocaleString('en-US'); }
+
 function calc(){
   const price=+document.getElementById('sl-price').value;
   const down=+document.getElementById('sl-down').value;
-  document.getElementById('sv-price').textContent='$'+price.toLocaleString('en-US');
-  document.getElementById('sv-down').textContent=down+'%';
+  const priceStr='$'+price.toLocaleString('en-US');
+  const downStr=down+'%';
+  document.getElementById('sv-price').textContent=priceStr;
+  document.getElementById('sv-down').textContent=downStr;
+  document.getElementById('sl-price').setAttribute('aria-valuetext',priceStr);
+  document.getElementById('sl-down').setAttribute('aria-valuetext',downStr);
+
   const loan=price*(1-down/100);
-  const mL=pmt(loan,R_LOW), mP=pmt(loan,R_PEAK), mN=pmt(loan,R_NOW);
+  const mL=pmt(loan,R_LOW), mP=pmt(loan,R_PEAK);
+  const diff=mP-mL, annual=diff*12;
+
   document.getElementById('calc-cards').innerHTML=`
     <div class="calc-card">
       <div class="cc-label">At the Feb. low</div>
@@ -478,29 +582,26 @@ function calc(){
     </div>
     <div class="calc-card">
       <div class="cc-label">At the March peak</div>
-      <div class="cc-rate">${R_PEAK.toFixed(2)}% — MND, ~March 26</div>
+      <div class="cc-rate">${R_PEAK.toFixed(2)}% — MND, March 26</div>
       <div class="cc-val red">${fmt(mP)}/mo</div>
     </div>
     <div class="calc-card">
       <div class="cc-label">Extra cost per year</div>
       <div class="cc-rate">Peak vs. low, annualized</div>
-      <div class="cc-val red">+${fmt((mP-mL)*12)}/yr</div>
+      <div class="cc-val red">+${fmt(annual)}/yr</div>
     </div>`;
 }
 document.getElementById('sl-price').addEventListener('input',calc);
 document.getElementById('sl-down').addEventListener('input',calc);
 calc();
 
-/* ── AUTO-RESIZE for iframe embedding ──
-   On your host page, add:
-
+/* ── AUTO-RESIZE postMessage for iframe embedding ──
+   On the host page:
    window.addEventListener('message', e => {
-     if (e.data?.type === 'mortgage-resize') {
+     if (e.data?.type === 'mortgage-resize')
        document.getElementById('YOUR_IFRAME_ID').style.height = e.data.height + 'px';
-     }
    });
-
-   And on the <iframe> tag: scrolling="no" style="width:100%;border:none;"
+   Iframe tag: scrolling="no" style="width:100%;border:none;"
 */
 function postHeight(){ window.parent.postMessage({type:'mortgage-resize',height:document.body.scrollHeight},'*'); }
 new ResizeObserver(postHeight).observe(document.body);
